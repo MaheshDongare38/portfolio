@@ -4,46 +4,22 @@
   <meta charset="UTF-8" />
   <title>mahesh@portfolio:~$</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta
-    name="description"
-    content="Terminal-style portfolio of Mahesh Sambhaji Dongare – student & aspiring software developer interested in Web, Cloud and Generative AI."
-  />
-  <meta name="keywords" content="Mahesh Dongare, portfolio, web developer, student, generative AI, cloud" />
+
+  <!-- SEO -->
+  <meta name="description" content="Terminal-style portfolio of Mahesh Sambhaji Dongare – AI & ML student passionate about Web Development, Cloud and Generative AI." />
+  <meta name="keywords" content="Mahesh Dongare, AI ML student, portfolio, web developer, cloud, generative AI, VIIT Pune" />
   <meta name="author" content="Mahesh Sambhaji Dongare" />
   <meta name="theme-color" content="#020a06" />
 
-  <!-- Open Graph -->
+  <!-- OG Preview -->
   <meta property="og:title" content="Mahesh Dongare — Terminal Portfolio" />
-  <meta property="og:description" content="Hacker-style terminal portfolio of a student & aspiring software developer." />
+  <meta property="og:description" content="Explore Mahesh's skills, projects and experience in this hacker-style portfolio." />
   <meta property="og:type" content="website" />
-  <!-- Put your own hosted image here later -->
+  <meta property="og:url" content="https://maheshdongare38.github.io/portfolio" />
   <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Mahesh+Terminal+Portfolio" />
-  <meta property="og:url" content="https://maheshdongare38.github.io/portfolio/" />
 
-  <!-- Twitter -->
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Mahesh Dongare — Terminal Portfolio" />
-  <meta name="twitter:description" content="Explore Mahesh's projects, skills and experience in a Linux-style terminal UI." />
-  <meta name="twitter:image" content="https://via.placeholder.com/1200x630.png?text=Mahesh+Terminal+Portfolio" />
-
-  <!-- JSON-LD for SEO -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Mahesh Sambhaji Dongare",
-    "jobTitle": "Student & Aspiring Software Developer",
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "IN"
-    },
-    "url": "https://maheshdongare38.github.io/portfolio",
-    "sameAs": [
-      "https://github.com/your-handle",
-      "https://linkedin.com/in/your-handle"
-    ]
-  }
-  </script>
 
   <style>
     :root {
@@ -54,38 +30,32 @@
       --text-main: #d6ffd6;
       --shadow-main: 0 0 28px rgba(0, 255, 128, 0.25);
     }
-
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: "Fira Code", "Courier New", monospace;
+      box-sizing: border-box;
+      font-family: "Fira Code", monospace;
     }
-
     body {
       min-height: 100vh;
       background: var(--bg-main);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--text-main);
       padding: 16px;
-      transition: background 0.6s ease, color 0.4s ease;
+      color: var(--text-main);
+      transition: background 0.6s, color 0.4s;
     }
-
     .terminal-wrapper {
       width: 100%;
       max-width: 960px;
       background: var(--card-bg);
       border-radius: 12px;
-      box-shadow: var(--shadow-main);
       border: 1px solid var(--accent-soft);
+      box-shadow: var(--shadow-main);
       overflow: hidden;
       position: relative;
-      z-index: 1;
-      transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
     }
-
     .terminal-header {
       display: flex;
       align-items: center;
@@ -93,743 +63,233 @@
       background: #020a06;
       border-bottom: 1px solid var(--accent-soft);
     }
-
     .dots {
       display: flex;
       gap: 6px;
       margin-right: 10px;
     }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-    }
-
-    .dot.red { background: #ff5f57; }
-    .dot.yellow { background: #febc2e; }
-    .dot.green { background: #28c840; }
-
-    .terminal-title {
-      font-size: 0.85rem;
-      opacity: 0.85;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .red { background: #ff5f57; }
+    .yellow { background: #febc2e; }
+    .green { background: #28c840; }
+    .terminal-title { font-size: 0.85rem; opacity: 0.8; }
     .terminal-body {
       padding: 12px;
-      height: 70vh;
-      max-height: 580px;
+      height: 73vh;
       overflow-y: auto;
       font-size: 0.95rem;
       line-height: 1.5;
       position: relative;
     }
-
-    .line {
-      margin-bottom: 4px;
-      white-space: pre-wrap;
-      word-break: break-word;
-    }
-
-    .line strong {
-      font-weight: 600;
-    }
-
-    .prompt {
-      color: var(--accent);
-    }
-
-    .prompt .user {
-      color: var(--accent);
-    }
-
-    .prompt .at,
-    .prompt .path,
-    .prompt .dollar {
-      color: #2ecc71;
-    }
-
-    .input-line {
-      display: flex;
-      align-items: center;
-      margin-top: 4px;
-      flex-wrap: wrap;
-    }
-
+    .line { white-space: pre-wrap; margin-bottom: 4px; }
+    .prompt { color: var(--accent); }
+    .input-line { display: flex; margin-top: 4px; }
     #input {
-      background: transparent;
+      flex: 1;
       border: none;
       outline: none;
-      color: var(--text-main);
-      flex: 1;
-      font: inherit;
-      min-width: 60px;
-    }
-
-    .cursor {
-      display: inline-block;
-      width: 8px;
-      margin-left: 2px;
-      animation: blink 1s step-start infinite;
-    }
-
-    @keyframes blink {
-      50% { opacity: 0; }
-    }
-
-    .hint {
-      font-size: 0.75rem;
-      opacity: 0.7;
-      margin-top: 6px;
-    }
-
-    a {
-      color: #7dffb3;
-      text-decoration: none;
-      border-bottom: 1px dotted #7dffb3;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    /* Scrollbar */
-    .terminal-body::-webkit-scrollbar {
-      width: 6px;
-    }
-    .terminal-body::-webkit-scrollbar-track {
-      background: #020503;
-    }
-    .terminal-body::-webkit-scrollbar-thumb {
-      background: var(--accent-soft);
-      border-radius: 3px;
-    }
-
-    /* Light mode */
-    body.light {
-      --bg-main: radial-gradient(circle at top, #e0f7ea 0, #f7f7f7 45%, #e0f0e5 100%);
-      --card-bg: #f5fff8;
-      --accent: #0c7a3c;
-      --accent-soft: #b2e3c6;
-      --text-main: #02210d;
-      --shadow-main: 0 0 20px rgba(0, 0, 0, 0.08);
-    }
-
-    body.light .terminal-header {
-      background: #e3f7ea;
-      border-bottom-color: var(--accent-soft);
-    }
-
-    body.light .prompt .user,
-    body.light .prompt .at,
-    body.light .prompt .path,
-    body.light .prompt .dollar {
-      color: #0c7a3c;
-    }
-
-    /* Theme variations */
-    body.theme-cyber {
-      --bg-main: radial-gradient(circle at top, #2b1055 0, #000 50%, #000 100%);
-      --card-bg: #050016;
-      --accent: #ff00e6;
-      --accent-soft: #3b0b5e;
-    }
-
-    body.theme-neon {
-      --bg-main: radial-gradient(circle at top, #001f3f 0, #000 50%, #000 100%);
-      --card-bg: #020814;
-      --accent: #00e6ff;
-      --accent-soft: #004b63;
-    }
-
-    body.theme-retro {
-      --bg-main: radial-gradient(circle at top, #663300 0, #1a0f02 45%, #000 100%);
-      --card-bg: #1b1207;
-      --accent: #ffcc66;
-      --accent-soft: #805a1a;
-    }
-
-    /* Matrix overlay */
-    .matrix-overlay {
-      position: absolute;
-      inset: 0;
       background: transparent;
-      overflow: hidden;
-      pointer-events: none;
-      z-index: 0;
+      font: inherit;
+      color: var(--text-main);
+    }
+    .cursor {
+      width: 8px;
+      animation: blink 1s infinite;
+    }
+    @keyframes blink { 50% {opacity: 0;} }
+    .hint { font-size: 0.7rem; opacity: 0.6; margin-top: 4px; }
+
+    /* Themes */
+    body.theme-cyber { --accent: #ff00e6; }
+    body.theme-neon { --accent: #00e6ff; }
+    body.theme-retro { --accent: #ffcc66; }
+    body.light {
+      --bg-main: #ffffff;
+      --card-bg: #fff;
+      --accent: #007a5e;
+      --text-main: #111;
+      --shadow-main: 0 0 10px rgba(0,0,0,0.1);
     }
 
-    .matrix-column {
-      position: absolute;
-      top: -100%;
-      width: 18px;
-      font-size: 14px;
-      color: rgba(120, 255, 170, 0.65);
-      text-shadow: 0 0 8px rgba(0, 255, 128, 0.9);
-      animation: matrix-fall linear infinite;
-      white-space: pre;
-    }
+    /* Matrix effect */
+    .matrix-overlay {position:absolute; inset:0; overflow:hidden; pointer-events:none;}
 
-    @keyframes matrix-fall {
-      to {
-        transform: translateY(200%);
-      }
-    }
-
-    /* Small badge in corner */
-    .corner-badge {
-      position: absolute;
-      right: 10px;
-      bottom: 8px;
-      font-size: 0.7rem;
-      opacity: 0.55;
-      pointer-events: none;
-    }
-
-    @media (max-width: 600px) {
-      .terminal-body {
-        height: 70vh;
-      }
-      .terminal-title {
-        font-size: 0.75rem;
-      }
-    }
   </style>
 </head>
 <body>
-  <div class="terminal-wrapper" aria-label="Terminal style portfolio">
+  <div class="terminal-wrapper">
     <div class="terminal-header">
-      <div class="dots" aria-hidden="true">
-        <div class="dot red"></div>
-        <div class="dot yellow"></div>
-        <div class="dot green"></div>
-      </div>
-      <div class="terminal-title">mahesh@portfolio:~ — terminal portfolio</div>
+      <div class="dots"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div>
+      <div class="terminal-title">mahesh@portfolio:~</div>
     </div>
-    <div class="terminal-body" id="terminal" role="textbox" aria-label="Portfolio terminal">
-      <!-- lines + input created by JS -->
-      <div class="matrix-overlay" id="matrixOverlay" style="display:none;"></div>
-      <div class="corner-badge">type "help" · ↑↓ history · Tab autocomplete</div>
+    <div class="terminal-body" id="terminal">
+      <div class="matrix-overlay" id="matrixOverlay"></div>
     </div>
   </div>
 
-  <script>
-    const terminal = document.getElementById("terminal");
-    const matrixOverlay = document.getElementById("matrixOverlay");
+<script>
+const terminal = document.getElementById("terminal");
+const matrixOverlay = document.getElementById("matrixOverlay");
 
-    const STATE = {
-      history: [],
-      historyIndex: -1,
-      username: "mahesh",
-      hostname: "portfolio",
-      version: "v1.2.0",
-      theme: "dark",
-      colorTheme: "default", // default, cyber, neon, retro
-      currentDir: "~"
-    };
+const STATE = {
+  username: "mahesh",
+  hostname: "portfolio",
+  version: "v1.3.0",
+  history: [],
+  historyIndex: -1,
+  colorTheme: "default"
+};
 
-    const PROJECTS = [
-      {
-        id: "vitalcare",
-        name: "Vital Care AI",
-        tags: ["AI", "Concept", "Health"],
-        summary: "Concept of an AI-based health assistant to monitor vitals and give basic suggestions.",
-        details:
-          "Focus on multimodal inputs (text + potential sensor data in future),\n" +
-          "clear user interface, and safe suggestion boundaries.\n" +
-          "Built as a design + prototype; explores how AI can assist, not replace, doctors.",
-        links: {
-          // put real links if/when you have them
-          github: "",
-          demo: ""
-        }
-      },
-      {
-        id: "genai-ppt",
-        name: "GenAI Presentation Assistant",
-        tags: ["GenAI", "Productivity"],
-        summary: "Uses prompts to draft PPT structures for subjects like GenAI and cloud computing.",
-        details:
-          "Automates slide headings, bullet points and structure based on a simple natural language prompt.\n" +
-          "Helps students quickly prepare organized presentation drafts.\n" +
-          "Currently used with tools like Gamma / Google Slides templates.",
-        links: {
-          github: "",
-          demo: ""
-        }
-      },
-      {
-        id: "custom-themes",
-        name: "Custom YouTube & SmashKarts Themes",
-        tags: ["CSS", "Stylus", "UI/UX"],
-        summary: "Created Stylus-based UI themes (Vedic, retro hacker style, etc).",
-        details:
-          "Experimented with color psychology, focus on readability, and unique vibes.\n" +
-          "Themes include Vedic Retro Island and other stylings for YouTube & SmashKarts.\n" +
-          "Good playground for CSS creativity and layout tweaks.",
-        links: {
-          github: "",
-          demo: ""
-        }
-      },
-      {
-        id: "gcp-labs",
-        name: "Google Cloud Labs Practice",
-        tags: ["Cloud", "Networking", "Security"],
-        summary: "Hands-on work with VPCs, load balancers, Cloud Armor, Kubernetes, etc.",
-        details:
-          "Completed multiple Skill Boost / Qwiklabs labs (VPC Networks, Cloud Armor, HTTPS Load Balancing,\n" +
-          "Kubernetes basics and more).\n" +
-          "Focus is understanding real-world cloud networking & security configurations.",
-        links: {
-          github: "",
-          demo: ""
-        }
-      }
-    ];
+const PROJECTS = [
+  {id:"vitalcare", name:"Vital Care AI", tags:["AI","Health"],
+   summary:"Concept of an AI-based health assistant.", details:"Improves health monitoring through AI assistance."},
+  {id:"genai-ppt", name:"GenAI Presentation Assistant", tags:["GenAI"],
+   summary:"Auto-creates presentation drafts using prompts.", details:"Enhances productivity using natural language."},
+  {id:"themes", name:"Custom UI Themes", tags:["CSS","Stylus"],
+   summary:"Stylus-based UI themes for web apps.", details:"Boosting UI/UX using creative CSS."}
+];
 
-    const COMMANDS = {
-      help: () =>
-        "Available commands:\n" +
-        "  help                - Show this help\n" +
-        "  about               - About Mahesh\n" +
-        "  about --fun         - A fun version of about\n" +
-        "  skills              - Tech stack & tools\n" +
-        "  projects            - List projects\n" +
-        "  project <id|index>  - Detailed project view\n" +
-        "  experience          - Experience summary\n" +
-        "  education           - Academic background\n" +
-        "  social              - Social profiles\n" +
-        "  contact             - How to reach me\n" +
-        "  resume              - Open resume\n" +
-        "  ls                  - Quick overview\n" +
-        "  cd projects         - Hint for projects\n" +
-        "  theme               - Show current theme\n" +
-        "  theme list          - List theme options\n" +
-        "  theme <name>        - Switch theme (default/cyber/neon/retro/light)\n" +
-        "  matrix              - Toggle matrix rain effect\n" +
-        "  sudo                - Try it ;)\n" +
-        "  clear               - Clear screen",
+const COMMANDS = {
+  help: () =>
+`Available commands:
+  help                - Show this help
+  about               - About Mahesh
+  skills              - Tech stack
+  projects            - Show project list
+  project {index|id}  - View project details
+  experience          - Work summary
+  education           - Academic details
+  social              - GitHub, LinkedIn
+  contact             - Email
+  resume              - Open resume link
+  theme list          - Show themes
+  theme {name}        - Change theme (default/cyber/neon/retro/light)
+  matrix              - Toggle Matrix effect
+  clear               - Clear screen`,
+  
+  about: () =>
+`I'm Mahesh Sambhaji Dongare 👋
+AI & ML Student passionate about:
+  • Web Development
+  • Generative AI
+  • Cloud + Linux
 
-      about: (args = []) => {
-        if (args.includes("--fun")) {
-          return (
-            "Mahesh v2.0.1 (experimental build) 🤖\n" +
-            "  - Class: Student / Developer hybrid\n" +
-            "  - Special attacks: CSS over-customization, GenAI experiments, cloud labs at 2AM\n" +
-            "  - Weaknesses: Long debugging sessions, overthinking small UI pixels\n" +
-            "  - Goal: Ship useful, clean, and slightly nerdy products on the web."
-          );
-        }
-        return (
-          "Hey, I'm Mahesh Sambhaji Dongare 👋\n" +
-          "A student and aspiring software developer from India.\n\n" +
-          "I love building web experiences, exploring Generative AI tools,\n" +
-          "customizing interfaces (Stylus, browser tweaks), and learning cloud\n" +
-          "concepts by doing real labs instead of only theory.\n\n" +
-          "I'm currently focusing on improving my frontend skills, deepening\n" +
-          "my understanding of cloud networking, and building small but useful\n" +
-          "projects I can ship and iterate on."
-        );
-      },
+Focused on building projects that help people!`,
 
-      skills: () =>
-        "Skills & Tools:\n" +
-        "  Languages:\n" +
-        "    - JavaScript\n" +
-        "    - Python\n" +
-        "    - C / C++ (basics)\n\n" +
-        "  Web & UI:\n" +
-        "    - HTML, CSS, responsive layouts\n" +
-        "    - Tailwind CSS\n" +
-        "    - React (basics)\n" +
-        "    - Browser UI customization with Stylus\n\n" +
-        "  Cloud & DevOps:\n" +
-        "    - Google Cloud Platform (hands-on labs: VPC, Load Balancing, Cloud Armor, etc.)\n" +
-        "    - Basic Linux, shell commands\n\n" +
-        "  Tools:\n" +
-        "    - Git & GitHub\n" +
-        "    - VS Code\n" +
-        "    - Postman (basics)\n\n" +
-        "  Interests:\n" +
-        "    - Generative AI\n" +
-        "    - Automation & desktop assistants\n" +
-        "    - Creative UI/UX for the web",
+  skills: () =>
+`Skills:
+  - JavaScript, Python, C/C++
+  - HTML, CSS, Tailwind, React (basics)
+  - Google Cloud (Qwiklabs labs)
+  - Linux Basics
+  - UI Customization (Stylus)`,
 
-      projects: () => {
-        let out = "Projects:\n";
-        PROJECTS.forEach((p, i) => {
-          out += `  [${i + 1}] ${p.name}  (${p.tags.join(", ")})\n     - ${p.summary}\n`;
-        });
-        out +=
-          "\nUse: project <index>  or  project <id>\n" +
-          "Example: project 1   or   project vitalcare";
-        return out;
-      },
+  projects: () => 
+PROJECTS.map((p,i)=>`  [${i+1}] ${p.name} - ${p.summary}`).join("\n") +
+`\n\nUse: project 1  OR  project vitalcare`,
 
-      project: (args = []) => {
-        if (!args.length) {
-          return 'Usage: project <index|id>\nExample: project 1   or   project vitalcare';
-        }
-        const key = args[0].toLowerCase();
-        let proj = null;
-        if (!isNaN(Number(key))) {
-          const idx = Number(key) - 1;
-          if (PROJECTS[idx]) proj = PROJECTS[idx];
-        } else {
-          proj = PROJECTS.find(p => p.id.toLowerCase() === key);
-        }
-        if (!proj) {
-          return `No project found for "${key}". Try "projects" to see the list.`;
-        }
-        let out =
-          `${proj.name} (${proj.tags.join(", ")})\n` +
-          "-".repeat(proj.name.length + 5) + "\n" +
-          proj.details + "\n\n";
-        if (proj.links.github) out += `GitHub: ${proj.links.github}\n`;
-        if (proj.links.demo) out += `Demo:   ${proj.links.demo}\n`;
-        if (!proj.links.github && !proj.links.demo) {
-          out += "Links: To be added soon.\n";
-        }
-        return out;
-      },
+  project: (args) => {
+    if(!args.length) return "Usage: project {index|id}";
+    const key=args[0].toLowerCase();
+    let p = isNaN(key)? PROJECTS.find(x=>x.id===key):PROJECTS[Number(key)-1];
+    return p? `${p.name}\n${p.details}` : "Project not found.";
+  },
 
-      experience: () =>
-        "Experience:\n" +
-        "  - Student developer working on personal projects in web and GenAI-related tools.\n" +
-        "  - Completed multiple Google Cloud Skill Boost / Qwiklabs labs\n" +
-        "    in networking, security, and Kubernetes.\n\n" +
-        "Looking for:\n" +
-        "  - Internships / part-time roles in web development, GenAI,\n" +
-        "    or cloud-related projects where I can learn by building.",
+  experience: () =>
+`Experience:
+  - Personal projects in AI/web
+  - Completed multiple Google Cloud labs
+  - Always learning 🚀`,
 
-      education: () =>
-        "Education:\n" +
-        "  - [Update this with your exact degree and college]\n" +
-        "    e.g. B.E. / B.Tech in Computer Engineering\n" +
-        "    Year: [YYYY - YYYY]\n\n" +
-        "Relevant areas of interest:\n" +
-        "  - Web Development\n" +
-        "  - Cloud Computing\n" +
-        "  - Artificial Intelligence & Generative AI\n" +
-        "  - Computer Networks",
+  education: () =>
+`Education:
+B.Tech in Artificial Intelligence and Machine Learning
+Vishwakarma Institute of Information Technology
+Pune – 411048, Maharashtra, India
+Graduation: 2026`,
 
-      social: () =>
-        "Social Profiles (replace with real links):\n" +
-        "  GitHub   -> https://github.com/your-handle\n" +
-        "  LinkedIn -> https://linkedin.com/in/your-handle\n" +
-        "  Twitter  -> https://x.com/your-handle",
+  social: () =>
+`GitHub:   https://github.com/MaheshDongare38
+LinkedIn: (Coming Soon)`,
 
-      contact: () =>
-        "Contact:\n" +
-        "  Email   -> your-email@example.com\n" +
-        "  LinkedIn-> https://linkedin.com/in/your-handle\n\n" +
-        "Open to:\n" +
-        "  - Internship opportunities\n" +
-        "  - Collaboration on web / AI / cloud side-projects\n" +
-        "  - Feedback on my projects & portfolio",
+  contact: () =>
+`Email: mahesh.1506.2005@gmail.com`,
 
-      resume: () => {
-        const resumeUrl = "https://example.com/your-resume.pdf"; // put your real resume link
-        window.open(resumeUrl, "_blank");
-        return "Opening resume in a new tab...";
-      },
+  resume: () =>
+`Resume not uploaded yet.
+Once ready → I'll activate this command 🚀`,
 
-      ls: () =>
-        ".\n" +
-        "├── about.md\n" +
-        "├── skills.txt\n" +
-        "├── projects/\n" +
-        "├── experience.log\n" +
-        "├── education.log\n" +
-        "├── social.links\n" +
-        "├── contact.cfg\n" +
-        "└── resume.pdf",
+  theme: (args) => {
+    if(args[0]==="list")
+      return "Themes: default, cyber, neon, retro, light";
+    let t=args[0];
+    document.body.classList = "";
+    if(t==="cyber") document.body.classList.add("theme-cyber");
+    if(t==="neon") document.body.classList.add("theme-neon");
+    if(t==="retro") document.body.classList.add("theme-retro");
+    if(t==="light") document.body.classList.add("light");
+    localStorage.setItem("theme",t);
+    return `Theme switched → ${t || "default"}`;
+  },
 
-      cd: (args = []) => {
-        if (!args.length) return "Usage: cd <dir>\nHint: try cd projects";
-        if (args[0].toLowerCase() === "projects") {
-          return 'Virtual filesystem only 😉  Use "projects" and "project <id>" instead.';
-        }
-        return `bash: cd: ${args[0]}: No such file or directory`;
-      },
+  matrix: () => {
+    let show=matrixOverlay.style.display!=="block";
+    matrixOverlay.style.display=show?"block":"none";
+    return show? "Matrix enabled" : "Matrix disabled";
+  },
 
-      clear: () => {
-        clearTerminal();
-        return "";
-      },
+  clear: () => (terminal.innerHTML = "")
+};
 
-      theme: (args = []) => {
-        if (!args.length) {
-          return (
-            `Current theme: ${STATE.colorTheme}${STATE.theme === "light" ? " (light mode)" : ""}\n` +
-            'Use "theme list" to see options.'
-          );
-        }
-        const sub = args[0].toLowerCase();
-        if (sub === "list") {
-          return (
-            "Available themes:\n" +
-            "  default   - hacker green\n" +
-            "  cyber     - purple cyberpunk\n" +
-            "  neon      - blue neon\n" +
-            "  retro     - warm retro terminal\n" +
-            "  light     - light mode\n\n" +
-            'Use: theme neon  or  theme light'
-          );
-        }
-        applyTheme(sub);
-        return `Switched theme to: ${STATE.colorTheme}${STATE.theme === "light" ? " (light mode)" : ""}`;
-      },
+function boot() {
+  write(`Booting PortfolioOS ${STATE.version}...\n`);
+  setTimeout(()=> write('Type "help" to begin\n\n'),400);
+  setTimeout(newPrompt,600);
+}
 
-      matrix: () => {
-        toggleMatrix();
-        return matrixOverlay.style.display === "none"
-          ? "Matrix effect disabled."
-          : "Matrix effect enabled. Follow the green rain...";
-      },
+function write(txt){
+  let d=document.createElement("div");
+  d.className="line";
+  d.textContent=txt;
+  terminal.appendChild(d);
+  terminal.scrollTo(0,terminal.scrollHeight);
+}
 
-      sudo: () =>
-        "sudo: permission denied.\n" +
-        "Nice try though. You already have root access to your own journey. 😉"
-    };
+function newPrompt(){
+  let div=document.createElement("div");
+  div.className="input-line";
+  div.innerHTML=`<span class="prompt">${STATE.username}@${STATE.hostname}:~$</span> <input id="input"><span class="cursor">▌</span>`;
+  terminal.appendChild(div);
+  let inp=document.getElementById("input");
+  inp.focus();
+  inp.onkeydown=handleInput;
+}
 
-    function createLine(text = "", isHTML = false) {
-      const div = document.createElement("div");
-      div.className = "line";
-      if (isHTML) {
-        div.innerHTML = text;
-      } else {
-        div.textContent = text;
-      }
-      terminal.insertBefore(div, terminal.querySelector(".corner-badge"));
-      terminal.scrollTop = terminal.scrollHeight;
-      return div;
-    }
+function handleInput(e){
+  if(e.key==="Enter"){
+    let val=e.target.value.trim();
+    STATE.history.push(val);
+    write(`${STATE.username}@${STATE.hostname}:~$ ${val}`);
+    e.target.parentElement.remove();
+    process(val);
+    newPrompt();
+  }
+}
 
-    function promptTemplate(command = "") {
-      return `<span class="prompt">
-        <span class="user">${STATE.username}</span><span class="at">@</span><span class="path">${STATE.hostname}</span>:<span class="dollar">~$</span>
-      </span> ${command}`;
-    }
+function process(val){
+  let [cmd,...args]=val.split(" ");
+  if(COMMANDS[cmd]) write(COMMANDS[cmd](args));
+  else write(`Unknown command: ${cmd}`);
+}
 
-    function createInputLine() {
-      const existingInput = document.getElementById("input");
-      if (existingInput) existingInput.remove();
+// load theme
+applySavedTheme();
+boot();
 
-      const inputLine = document.createElement("div");
-      inputLine.className = "input-line";
-      inputLine.innerHTML = `
-        <span class="prompt">
-          <span class="user">${STATE.username}</span><span class="at">@</span><span class="path">${STATE.hostname}</span>:<span class="dollar">~$</span>
-        </span>&nbsp;
-        <input id="input" autocomplete="off" spellcheck="false" aria-label="Terminal input" />
-        <span class="cursor">▌</span>
-      `;
-      terminal.insertBefore(inputLine, terminal.querySelector(".corner-badge"));
-
-      const hint = document.createElement("div");
-      hint.className = "hint";
-      hint.textContent = 'Type "help" to see commands. Use ↑ / ↓ for history, Tab for autocomplete.';
-      terminal.insertBefore(hint, terminal.querySelector(".corner-badge"));
-
-      const input = document.getElementById("input");
-      input.focus();
-      input.addEventListener("keydown", handleInput);
-      terminal.scrollTop = terminal.scrollHeight;
-    }
-
-    function clearTerminal() {
-      // remove all lines except overlay + badge
-      [...terminal.querySelectorAll(".line, .input-line, .hint")].forEach(el => el.remove());
-      bootSequence();
-    }
-
-    function bootSequence() {
-      const steps = [
-        `Booting MaheshOS ${STATE.version}...`,
-        "Loading modules: [web] [genai] [cloud] [ui-customization]",
-        "Checking network... OK",
-        "Starting portfolio services... OK",
-        "",
-        'Welcome. Type "help" to list available commands.',
-        ""
-      ];
-      let i = 0;
-      const runStep = () => {
-        if (i < steps.length) {
-          createLine(steps[i++]);
-          setTimeout(runStep, 350);
-        } else {
-          createInputLine();
-        }
-      };
-      runStep();
-    }
-
-    function handleInput(e) {
-      const input = e.target;
-
-      // history navigation
-      if (e.key === "ArrowUp") {
-        e.preventDefault();
-        if (STATE.history.length === 0) return;
-        if (STATE.historyIndex === -1) {
-          STATE.historyIndex = STATE.history.length - 1;
-        } else if (STATE.historyIndex > 0) {
-          STATE.historyIndex--;
-        }
-        input.value = STATE.history[STATE.historyIndex] || "";
-        return;
-      }
-
-      if (e.key === "ArrowDown") {
-        e.preventDefault();
-        if (STATE.history.length === 0) return;
-        if (STATE.historyIndex === -1) return;
-        if (STATE.historyIndex < STATE.history.length - 1) {
-          STATE.historyIndex++;
-          input.value = STATE.history[STATE.historyIndex] || "";
-        } else {
-          STATE.historyIndex = -1;
-          input.value = "";
-        }
-        return;
-      }
-
-      // autocomplete
-      if (e.key === "Tab") {
-        e.preventDefault();
-        const value = input.value.trim();
-        if (!value) return;
-        const [cmdPart] = value.split(/\s+/);
-        const matches = Object.keys(COMMANDS).filter(c => c.startsWith(cmdPart));
-        if (matches.length === 1) {
-          input.value = matches[0];
-        }
-        return;
-      }
-
-      if (e.key === "Enter") {
-        e.preventDefault();
-        const value = input.value.trim();
-        const parent = input.parentElement;
-        const hint = parent.nextElementSibling;
-
-        // Freeze typed command
-        const historyLine = createLine("", true);
-        historyLine.innerHTML = promptTemplate(value);
-
-        // Remove input line + hint
-        parent.remove();
-        if (hint && hint.classList.contains("hint")) {
-          hint.remove();
-        }
-
-        if (value) {
-          STATE.history.push(value);
-          STATE.historyIndex = -1;
-        }
-
-        if (value.length > 0) {
-          const [cmd, ...args] = value.split(/\s+/);
-          const lowCmd = cmd.toLowerCase();
-          if (COMMANDS[lowCmd]) {
-            const result = COMMANDS[lowCmd](args);
-            if (lowCmd !== "clear" && result && typeof result === "string") {
-              createLine(result);
-            }
-          } else {
-            createLine(`Command not found: ${value}\nType "help" to see available commands.`);
-          }
-        }
-
-        createInputLine();
-      }
-    }
-
-    // Theme helpers
-    function applyTheme(name) {
-      // reset classes
-      document.body.classList.remove("light", "theme-cyber", "theme-neon", "theme-retro");
-      STATE.theme = "dark";
-      STATE.colorTheme = "default";
-
-      switch (name) {
-        case "cyber":
-          document.body.classList.add("theme-cyber");
-          STATE.colorTheme = "cyber";
-          break;
-        case "neon":
-          document.body.classList.add("theme-neon");
-          STATE.colorTheme = "neon";
-          break;
-        case "retro":
-          document.body.classList.add("theme-retro");
-          STATE.colorTheme = "retro";
-          break;
-        case "light":
-          document.body.classList.add("light");
-          STATE.theme = "light";
-          STATE.colorTheme = "default";
-          break;
-        default:
-          // default hacker theme (no extra class)
-          STATE.colorTheme = "default";
-      }
-
-      try {
-        localStorage.setItem("mahesh-color-theme", STATE.colorTheme);
-        localStorage.setItem("mahesh-theme-mode", STATE.theme);
-      } catch (e) {}
-    }
-
-    // Matrix effect
-    function toggleMatrix() {
-      if (matrixOverlay.style.display === "none" || matrixOverlay.style.display === "") {
-        matrixOverlay.style.display = "block";
-        matrixOverlay.innerHTML = "";
-        const width = matrixOverlay.clientWidth;
-        const columns = Math.floor(width / 18);
-        const charset = "01ABCDEFGHIJKLMNOPQRSTUVXYZ@#$%&";
-
-        for (let i = 0; i < columns; i++) {
-          const col = document.createElement("div");
-          col.className = "matrix-column";
-          col.style.left = `${i * 18}px`;
-          col.style.animationDuration = 4 + Math.random() * 4 + "s";
-          col.style.animationDelay = Math.random() * 4 + "s";
-
-          let text = "";
-          const rows = 20 + Math.floor(Math.random() * 20);
-          for (let j = 0; j < rows; j++) {
-            const ch = charset[Math.floor(Math.random() * charset.length)];
-            text += ch + "\n";
-          }
-          col.textContent = text;
-          matrixOverlay.appendChild(col);
-        }
-      } else {
-        matrixOverlay.style.display = "none";
-        matrixOverlay.innerHTML = "";
-      }
-    }
-
-    // Restore theme from localStorage
-    (function initTheme() {
-      try {
-        const t = localStorage.getItem("mahesh-theme-mode");
-        const c = localStorage.getItem("mahesh-color-theme");
-        if (c) applyTheme(c);
-        if (t === "light") applyTheme("light");
-      } catch (e) {}
-    })();
-
-    // Start terminal
-    bootSequence();
-  </script>
+function applySavedTheme(){
+  let t = localStorage.getItem("theme");
+  if(t) COMMANDS.theme([t]);
+}
+</script>
 </body>
 </html>
