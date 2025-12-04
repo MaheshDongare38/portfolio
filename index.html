@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>mahesh@portfolio:~$</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Terminal-style developer portfolio of Mahesh Sambhaji Dongare – Web, Cloud, and GenAI enthusiast."
+  />
+  <meta name="theme-color" content="#020a06" />
+
+  <!-- Basic Open Graph -->
+  <meta property="og:title" content="Mahesh Dongare — Terminal Portfolio" />
+  <meta property="og:description" content="Terminal-style portfolio of a web & GenAI enthusiast." />
+  <meta property="og:type" content="website" />
+
+  <!-- JSON-LD for SEO (customize if you want) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Mahesh Sambhaji Dongare",
+    "jobTitle": "Student • Aspiring Software Developer",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "IN"
+    },
+    "url": "https://example.com",
+    "sameAs": [
+      "https://github.com/your-handle",
+      "https://linkedin.com/in/your-handle"
+    ]
+  }
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Fira Code", "Courier New", monospace;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #1a472a 0, #020a06 45%, #000 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #d6ffd6;
+      padding: 16px;
+    }
+
+    .terminal-wrapper {
+      width: 100%;
+      max-width: 960px;
+      background: #020503;
+      border-radius: 12px;
+      box-shadow: 0 0 28px rgba(0, 255, 128, 0.25);
+      border: 1px solid #0a3b20;
+      overflow: hidden;
+    }
+
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      background: #020a06;
+      border-bottom: 1px solid #0a3b20;
+    }
+
+    .dots {
+      display: flex;
+      gap: 6px;
+      margin-right: 10px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .dot.red { background: #ff5f57; }
+    .dot.yellow { background: #febc2e; }
+    .dot.green { background: #28c840; }
+
+    .terminal-title {
+      font-size: 0.85rem;
+      opacity: 0.85;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .terminal-body {
+      padding: 12px;
+      height: 70vh;
+      max-height: 580px;
+      overflow-y: auto;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .line {
+      margin-bottom: 4px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .line strong {
+      font-weight: 600;
+    }
+
+    .prompt {
+      color: #32ff7e;
+    }
+
+    .prompt .user {
+      color: #32ff7e;
+    }
+
+    .prompt .at {
+      color: #2ecc71;
+    }
+
+    .prompt .path {
+      color: #2ecc71;
+    }
+
+    .prompt .dollar {
+      color: #27ae60;
+    }
+
+    .input-line {
+      display: flex;
+      align-items: center;
+      margin-top: 4px;
+      flex-wrap: wrap;
+    }
+
+    #input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #d6ffd6;
+      flex: 1;
+      font: inherit;
+      min-width: 60px;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      margin-left: 2px;
+      animation: blink 1s step-start infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    .hint {
+      font-size: 0.75rem;
+      opacity: 0.7;
+      margin-top: 6px;
+    }
+
+    a {
+      color: #7dffb3;
+      text-decoration: none;
+      border-bottom: 1px dotted #7dffb3;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Scrollbar */
+    .terminal-body::-webkit-scrollbar {
+      width: 6px;
+    }
+    .terminal-body::-webkit-scrollbar-track {
+      background: #020503;
+    }
+    .terminal-body::-webkit-scrollbar-thumb {
+      background: #0a3b20;
+      border-radius: 3px;
+    }
+
+    /* Light mode theme */
+    body.light {
+      background: radial-gradient(circle at top, #e0f7ea 0, #f7f7f7 45%, #e0f0e5 100%);
+      color: #02210d;
+    }
+    body.light .terminal-wrapper {
+      background: #f5fff8;
+      border-color: #b2e3c6;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+    }
+    body.light .terminal-header {
+      background: #e3f7ea;
+      border-bottom-color: #b2e3c6;
+    }
+    body.light .terminal-body {
+      color: #02210d;
+    }
+    body.light .prompt .user,
+    body.light .prompt .at,
+    body.light .prompt .path,
+    body.light .prompt .dollar {
+      color: #0c7a3c;
+    }
+
+    @media (max-width: 600px) {
+      .terminal-body {
+        height: 70vh;
+      }
+      .terminal-title {
+        font-size: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="terminal-wrapper" aria-label="Terminal style portfolio">
+    <div class="terminal-header">
+      <div class="dots" aria-hidden="true">
+        <div class="dot red"></div>
+        <div class="dot yellow"></div>
+        <div class="dot green"></div>
+      </div>
+      <div class="terminal-title">mahesh@portfolio:~ — terminal portfolio</div>
+    </div>
+    <div class="terminal-body" id="terminal" role="textbox" aria-label="Portfolio terminal">
+      <!-- Lines and input will be managed by JS -->
+    </div>
+  </div>
+
+  <script>
+    const terminal = document.getElementById("terminal");
+
+    const STATE = {
+      history: [],
+      historyIndex: -1,
+      username: "mahesh",
+      hostname: "portfolio",
+      version: "v1.0.0"
+    };
+
+    const COMMANDS = {
+      help: () => (
+        "Available commands:\n" +
+        "  help        - Show this help\n" +
+        "  about       - Who is Mahesh?\n" +
+        "  skills      - Tech stack & tools\n" +
+        "  projects    - Selected work\n" +
+        "  experience  - Internships & roles\n" +
+        "  education   - Academic background\n" +
+        "  social      - Social profiles\n" +
+        "  contact     - Get in touch\n" +
+        "  resume      - Download resume (opens link)\n" +
+        "  ls          - Quick overview\n" +
+        "  theme       - Toggle light/dark mode\n" +
+        "  clear       - Clear the screen"
+      ),
+
+      about: () => (
+        "Hey, I'm Mahesh Sambhaji Dongare 👋\n" +
+        "A student and aspiring software developer from India.\n\n" +
+        "I love building web experiences, experimenting with Generative AI,\n" +
+        "customizing UIs (Stylus, browser extensions), and playing with cloud labs\n" +
+        "on Google Cloud."
+      ),
+
+      skills: () => (
+        "Skills & Tools:\n" +
+        "  Languages:\n" +
+        "    - JavaScript\n" +
+        "    - Python\n" +
+        "    - C / C++ (basics)\n\n" +
+        "  Web & UI:\n" +
+        "    - HTML, CSS, responsive layouts\n" +
+        "    - Tailwind CSS\n" +
+        "    - React (basics)\n" +
+        "    - Browser UI customization (Stylus)\n\n" +
+        "  Cloud & DevOps:\n" +
+        "    - Google Cloud Platform (Qwiklabs / Skill Boost labs)\n" +
+        "    - Basic Linux & shell\n\n" +
+        "  Tools:\n" +
+        "    - Git & GitHub\n" +
+        "    - VS Code\n" +
+        "    - Postman (basics)\n\n" +
+        "  Interests:\n" +
+        "    - Generative AI\n" +
+        "    - Automation & desktop assistants\n" +
+        "    - Creative UI/UX on web"
+      ),
+
+      projects: () => (
+        "Selected Projects:\n" +
+        "  1) Vital Care AI\n" +
+        "     - Concept of an AI-based health assistant to monitor vitals\n" +
+        "       and give basic suggestions.\n" +
+        "     - Focus on multimodal inputs and clean UI.\n" +
+        "     - Status: Concept & design phase.\n\n" +
+        "  2) GenAI Presentation Assistant\n" +
+        "     - Uses prompts to auto-generate PPT structures for subjects\n" +
+        "       like GenAI and cloud computing.\n" +
+        "     - Helps students quickly draft presentations.\n\n" +
+        "  3) Custom YouTube & SmashKarts Themes\n" +
+        "     - Created Stylus-based UI themes (Vedic / retro hacker style).\n" +
+        "     - Focused on color psychology, readability and aesthetics.\n\n" +
+        "  4) Google Cloud Labs\n" +
+        "     - Hands-on labs on VPC, Load Balancing, Cloud Armor, GKE, etc.\n" +
+        "     - Focus on understanding networking and security in the cloud.\n\n" +
+        "GitHub links: (update with your real profile)\n" +
+        "  -> https://github.com/your-handle"
+      ),
+
+      experience: () => (
+        "Experience:\n" +
+        "  - Student developer working on personal projects in web and AI.\n" +
+        "  - Completed multiple Google Cloud Skill Boost / Qwiklabs labs\n" +
+        "    in networking, Kubernetes, and security.\n\n" +
+        "Actively looking for:\n" +
+        "  - Internships / part-time roles in web dev, GenAI, or cloud."
+      ),
+
+      education: () => (
+        "Education:\n" +
+        "  - [Update with your college & degree]\n" +
+        "    e.g. B.E. / B.Tech in Computer Engineering\n" +
+        "    Year: [YYYY - YYYY]\n\n" +
+        "Highlights:\n" +
+        "  - Courses: Data Structures, Web Development, Cloud Computing,\n" +
+        "    Artificial Intelligence, Generative AI.\n" +
+        "  - Extra: Participated in tech events, coding practice, cloud labs."
+      ),
+
+      social: () => (
+        "Social Profiles (replace with your actual links):\n" +
+        "  GitHub   -> https://github.com/your-handle\n" +
+        "  LinkedIn -> https://linkedin.com/in/your-handle\n" +
+        "  Twitter  -> https://x.com/your-handle"
+      ),
+
+      contact: () => (
+        "Contact:\n" +
+        "  Email   -> your-email@example.com\n" +
+        "  LinkedIn-> https://linkedin.com/in/your-handle\n\n" +
+        "You can reach out for:\n" +
+        "  - Internships\n" +
+        "  - Collaboration on web / AI projects\n" +
+        "  - Custom UI themes and automation ideas"
+      ),
+
+      resume: () => {
+        // Put your real resume link here
+        const resumeUrl = "https://example.com/your-resume.pdf";
+        window.open(resumeUrl, "_blank");
+        return "Opening resume in a new tab...";
+      },
+
+      ls: () => (
+        ".\n" +
+        "├── about.md\n" +
+        "├── skills.txt\n" +
+        "├── projects/\n" +
+        "├── experience.log\n" +
+        "├── education.log\n" +
+        "├── social.links\n" +
+        "├── contact.cfg\n" +
+        "└── resume.pdf"
+      ),
+
+      clear: () => {
+        clearTerminal();
+        return "";
+      },
+
+      theme: () => {
+        document.body.classList.toggle("light");
+        try {
+          localStorage.setItem("mahesh-theme", document.body.classList.contains("light") ? "light" : "dark");
+        } catch (e) {}
+        return "Toggled theme.";
+      }
+    };
+
+    function createLine(text = "", isHTML = false) {
+      const div = document.createElement("div");
+      div.className = "line";
+      if (isHTML) {
+        div.innerHTML = text;
+      } else {
+        div.textContent = text;
+      }
+      terminal.appendChild(div);
+      terminal.scrollTop = terminal.scrollHeight;
+      return div;
+    }
+
+    function promptTemplate(command = "") {
+      return `<span class="prompt">
+        <span class="user">${STATE.username}</span><span class="at">@</span><span class="path">${STATE.hostname}</span>:<span class="dollar">~$</span>
+      </span> ${command}`;
+    }
+
+    function createInputLine() {
+      const inputLine = document.createElement("div");
+      inputLine.className = "input-line";
+      inputLine.innerHTML = `
+        <span class="prompt">
+          <span class="user">${STATE.username}</span><span class="at">@</span><span class="path">${STATE.hostname}</span>:<span class="dollar">~$</span>
+        </span>&nbsp;
+        <input id="input" autocomplete="off" spellcheck="false" aria-label="Terminal input" />
+        <span class="cursor">▌</span>
+      `;
+      terminal.appendChild(inputLine);
+
+      const hint = document.createElement("div");
+      hint.className = "hint";
+      hint.textContent = 'Type "help" to see commands. Use ↑ / ↓ for history, Tab for autocomplete.';
+      terminal.appendChild(hint);
+
+      const input = document.getElementById("input");
+      input.focus();
+      input.addEventListener("keydown", handleInput);
+      terminal.scrollTop = terminal.scrollHeight;
+    }
+
+    function clearTerminal() {
+      terminal.innerHTML = "";
+      bootSequence();
+    }
+
+    function bootSequence() {
+      createLine(`Initializing Mahesh's portfolio ${STATE.version}...`);
+      createLine("Loading modules: [web] [genai] [cloud] [ui-customization]");
+      createLine("System status: OK\n");
+      createLine('Type "help" to list available commands.\n');
+      createInputLine();
+    }
+
+    function handleInput(e) {
+      const input = e.target;
+
+      // history navigation
+      if (e.key === "ArrowUp") {
+        e.preventDefault();
+        if (STATE.history.length === 0) return;
+        if (STATE.historyIndex === -1) {
+          STATE.historyIndex = STATE.history.length - 1;
+        } else if (STATE.historyIndex > 0) {
+          STATE.historyIndex--;
+        }
+        input.value = STATE.history[STATE.historyIndex] || "";
+        return;
+      }
+
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        if (STATE.history.length === 0) return;
+        if (STATE.historyIndex === -1) return;
+        if (STATE.historyIndex < STATE.history.length - 1) {
+          STATE.historyIndex++;
+          input.value = STATE.history[STATE.historyIndex] || "";
+        } else {
+          STATE.historyIndex = -1;
+          input.value = "";
+        }
+        return;
+      }
+
+      // autocomplete
+      if (e.key === "Tab") {
+        e.preventDefault();
+        const value = input.value.trim();
+        if (!value) return;
+        const cmdPart = value.split(" ")[0].toLowerCase();
+        const matches = Object.keys(COMMANDS).filter(c => c.startsWith(cmdPart));
+        if (matches.length === 1) {
+          input.value = matches[0];
+        }
+        return;
+      }
+
+      if (e.key === "Enter") {
+        e.preventDefault();
+        const value = input.value.trim();
+        const parent = input.parentElement;
+        const hint = parent.nextElementSibling;
+
+        // Freeze typed command
+        const historyLine = createLine("", true);
+        historyLine.innerHTML = promptTemplate(value);
+
+        // Remove input line + hint
+        parent.remove();
+        if (hint && hint.classList.contains("hint")) {
+          hint.remove();
+        }
+
+        if (value) {
+          STATE.history.push(value);
+          STATE.historyIndex = -1;
+        }
+
+        if (value.length > 0) {
+          const cmd = value.split(" ")[0].toLowerCase();
+          if (COMMANDS[cmd]) {
+            const result = COMMANDS[cmd]();
+            if (cmd !== "clear") {
+              if (result && typeof result === "string") {
+                createLine(result);
+              }
+            }
+          } else {
+            createLine(`Command not found: ${value}\nType "help" to see available commands.`);
+          }
+        }
+
+        createInputLine();
+      }
+    }
+
+    // theme from localStorage if available
+    (function initTheme() {
+      try {
+        const saved = localStorage.getItem("mahesh-theme");
+        if (saved === "light") {
+          document.body.classList.add("light");
+        }
+      } catch (e) {}
+    })();
+
+    // start
+    bootSequence();
+  </script>
+</body>
+</html>
