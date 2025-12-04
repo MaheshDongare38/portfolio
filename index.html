@@ -6,27 +6,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta
     name="description"
-    content="Terminal-style developer portfolio of Mahesh Sambhaji Dongare – Web, Cloud, and GenAI enthusiast."
+    content="Terminal-style portfolio of Mahesh Sambhaji Dongare – student & aspiring software developer interested in Web, Cloud and Generative AI."
   />
+  <meta name="keywords" content="Mahesh Dongare, portfolio, web developer, student, generative AI, cloud" />
+  <meta name="author" content="Mahesh Sambhaji Dongare" />
   <meta name="theme-color" content="#020a06" />
 
-  <!-- Basic Open Graph -->
+  <!-- Open Graph -->
   <meta property="og:title" content="Mahesh Dongare — Terminal Portfolio" />
-  <meta property="og:description" content="Terminal-style portfolio of a web & GenAI enthusiast." />
+  <meta property="og:description" content="Hacker-style terminal portfolio of a student & aspiring software developer." />
   <meta property="og:type" content="website" />
+  <!-- Put your own hosted image here later -->
+  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Mahesh+Terminal+Portfolio" />
+  <meta property="og:url" content="https://maheshdongare38.github.io/portfolio/" />
 
-  <!-- JSON-LD for SEO (customize if you want) -->
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mahesh Dongare — Terminal Portfolio" />
+  <meta name="twitter:description" content="Explore Mahesh's projects, skills and experience in a Linux-style terminal UI." />
+  <meta name="twitter:image" content="https://via.placeholder.com/1200x630.png?text=Mahesh+Terminal+Portfolio" />
+
+  <!-- JSON-LD for SEO -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Mahesh Sambhaji Dongare",
-    "jobTitle": "Student • Aspiring Software Developer",
+    "jobTitle": "Student & Aspiring Software Developer",
     "address": {
       "@type": "PostalAddress",
       "addressCountry": "IN"
     },
-    "url": "https://example.com",
+    "url": "https://maheshdongare38.github.io/portfolio",
     "sameAs": [
       "https://github.com/your-handle",
       "https://linkedin.com/in/your-handle"
@@ -35,6 +46,15 @@
   </script>
 
   <style>
+    :root {
+      --bg-main: radial-gradient(circle at top, #1a472a 0, #020a06 45%, #000 100%);
+      --card-bg: #020503;
+      --accent: #32ff7e;
+      --accent-soft: #0a3b20;
+      --text-main: #d6ffd6;
+      --shadow-main: 0 0 28px rgba(0, 255, 128, 0.25);
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -44,22 +64,26 @@
 
     body {
       min-height: 100vh;
-      background: radial-gradient(circle at top, #1a472a 0, #020a06 45%, #000 100%);
+      background: var(--bg-main);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #d6ffd6;
+      color: var(--text-main);
       padding: 16px;
+      transition: background 0.6s ease, color 0.4s ease;
     }
 
     .terminal-wrapper {
       width: 100%;
       max-width: 960px;
-      background: #020503;
+      background: var(--card-bg);
       border-radius: 12px;
-      box-shadow: 0 0 28px rgba(0, 255, 128, 0.25);
-      border: 1px solid #0a3b20;
+      box-shadow: var(--shadow-main);
+      border: 1px solid var(--accent-soft);
       overflow: hidden;
+      position: relative;
+      z-index: 1;
+      transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
     }
 
     .terminal-header {
@@ -67,7 +91,7 @@
       align-items: center;
       padding: 8px 12px;
       background: #020a06;
-      border-bottom: 1px solid #0a3b20;
+      border-bottom: 1px solid var(--accent-soft);
     }
 
     .dots {
@@ -101,6 +125,7 @@
       overflow-y: auto;
       font-size: 0.95rem;
       line-height: 1.5;
+      position: relative;
     }
 
     .line {
@@ -114,23 +139,17 @@
     }
 
     .prompt {
-      color: #32ff7e;
+      color: var(--accent);
     }
 
     .prompt .user {
-      color: #32ff7e;
+      color: var(--accent);
     }
 
-    .prompt .at {
-      color: #2ecc71;
-    }
-
-    .prompt .path {
-      color: #2ecc71;
-    }
-
+    .prompt .at,
+    .prompt .path,
     .prompt .dollar {
-      color: #27ae60;
+      color: #2ecc71;
     }
 
     .input-line {
@@ -144,7 +163,7 @@
       background: transparent;
       border: none;
       outline: none;
-      color: #d6ffd6;
+      color: var(--text-main);
       flex: 1;
       font: inherit;
       min-width: 60px;
@@ -185,32 +204,89 @@
       background: #020503;
     }
     .terminal-body::-webkit-scrollbar-thumb {
-      background: #0a3b20;
+      background: var(--accent-soft);
       border-radius: 3px;
     }
 
-    /* Light mode theme */
+    /* Light mode */
     body.light {
-      background: radial-gradient(circle at top, #e0f7ea 0, #f7f7f7 45%, #e0f0e5 100%);
-      color: #02210d;
+      --bg-main: radial-gradient(circle at top, #e0f7ea 0, #f7f7f7 45%, #e0f0e5 100%);
+      --card-bg: #f5fff8;
+      --accent: #0c7a3c;
+      --accent-soft: #b2e3c6;
+      --text-main: #02210d;
+      --shadow-main: 0 0 20px rgba(0, 0, 0, 0.08);
     }
-    body.light .terminal-wrapper {
-      background: #f5fff8;
-      border-color: #b2e3c6;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
-    }
+
     body.light .terminal-header {
       background: #e3f7ea;
-      border-bottom-color: #b2e3c6;
+      border-bottom-color: var(--accent-soft);
     }
-    body.light .terminal-body {
-      color: #02210d;
-    }
+
     body.light .prompt .user,
     body.light .prompt .at,
     body.light .prompt .path,
     body.light .prompt .dollar {
       color: #0c7a3c;
+    }
+
+    /* Theme variations */
+    body.theme-cyber {
+      --bg-main: radial-gradient(circle at top, #2b1055 0, #000 50%, #000 100%);
+      --card-bg: #050016;
+      --accent: #ff00e6;
+      --accent-soft: #3b0b5e;
+    }
+
+    body.theme-neon {
+      --bg-main: radial-gradient(circle at top, #001f3f 0, #000 50%, #000 100%);
+      --card-bg: #020814;
+      --accent: #00e6ff;
+      --accent-soft: #004b63;
+    }
+
+    body.theme-retro {
+      --bg-main: radial-gradient(circle at top, #663300 0, #1a0f02 45%, #000 100%);
+      --card-bg: #1b1207;
+      --accent: #ffcc66;
+      --accent-soft: #805a1a;
+    }
+
+    /* Matrix overlay */
+    .matrix-overlay {
+      position: absolute;
+      inset: 0;
+      background: transparent;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .matrix-column {
+      position: absolute;
+      top: -100%;
+      width: 18px;
+      font-size: 14px;
+      color: rgba(120, 255, 170, 0.65);
+      text-shadow: 0 0 8px rgba(0, 255, 128, 0.9);
+      animation: matrix-fall linear infinite;
+      white-space: pre;
+    }
+
+    @keyframes matrix-fall {
+      to {
+        transform: translateY(200%);
+      }
+    }
+
+    /* Small badge in corner */
+    .corner-badge {
+      position: absolute;
+      right: 10px;
+      bottom: 8px;
+      font-size: 0.7rem;
+      opacity: 0.55;
+      pointer-events: none;
     }
 
     @media (max-width: 600px) {
@@ -234,47 +310,133 @@
       <div class="terminal-title">mahesh@portfolio:~ — terminal portfolio</div>
     </div>
     <div class="terminal-body" id="terminal" role="textbox" aria-label="Portfolio terminal">
-      <!-- Lines and input will be managed by JS -->
+      <!-- lines + input created by JS -->
+      <div class="matrix-overlay" id="matrixOverlay" style="display:none;"></div>
+      <div class="corner-badge">type "help" · ↑↓ history · Tab autocomplete</div>
     </div>
   </div>
 
   <script>
     const terminal = document.getElementById("terminal");
+    const matrixOverlay = document.getElementById("matrixOverlay");
 
     const STATE = {
       history: [],
       historyIndex: -1,
       username: "mahesh",
       hostname: "portfolio",
-      version: "v1.0.0"
+      version: "v1.2.0",
+      theme: "dark",
+      colorTheme: "default", // default, cyber, neon, retro
+      currentDir: "~"
     };
 
+    const PROJECTS = [
+      {
+        id: "vitalcare",
+        name: "Vital Care AI",
+        tags: ["AI", "Concept", "Health"],
+        summary: "Concept of an AI-based health assistant to monitor vitals and give basic suggestions.",
+        details:
+          "Focus on multimodal inputs (text + potential sensor data in future),\n" +
+          "clear user interface, and safe suggestion boundaries.\n" +
+          "Built as a design + prototype; explores how AI can assist, not replace, doctors.",
+        links: {
+          // put real links if/when you have them
+          github: "",
+          demo: ""
+        }
+      },
+      {
+        id: "genai-ppt",
+        name: "GenAI Presentation Assistant",
+        tags: ["GenAI", "Productivity"],
+        summary: "Uses prompts to draft PPT structures for subjects like GenAI and cloud computing.",
+        details:
+          "Automates slide headings, bullet points and structure based on a simple natural language prompt.\n" +
+          "Helps students quickly prepare organized presentation drafts.\n" +
+          "Currently used with tools like Gamma / Google Slides templates.",
+        links: {
+          github: "",
+          demo: ""
+        }
+      },
+      {
+        id: "custom-themes",
+        name: "Custom YouTube & SmashKarts Themes",
+        tags: ["CSS", "Stylus", "UI/UX"],
+        summary: "Created Stylus-based UI themes (Vedic, retro hacker style, etc).",
+        details:
+          "Experimented with color psychology, focus on readability, and unique vibes.\n" +
+          "Themes include Vedic Retro Island and other stylings for YouTube & SmashKarts.\n" +
+          "Good playground for CSS creativity and layout tweaks.",
+        links: {
+          github: "",
+          demo: ""
+        }
+      },
+      {
+        id: "gcp-labs",
+        name: "Google Cloud Labs Practice",
+        tags: ["Cloud", "Networking", "Security"],
+        summary: "Hands-on work with VPCs, load balancers, Cloud Armor, Kubernetes, etc.",
+        details:
+          "Completed multiple Skill Boost / Qwiklabs labs (VPC Networks, Cloud Armor, HTTPS Load Balancing,\n" +
+          "Kubernetes basics and more).\n" +
+          "Focus is understanding real-world cloud networking & security configurations.",
+        links: {
+          github: "",
+          demo: ""
+        }
+      }
+    ];
+
     const COMMANDS = {
-      help: () => (
+      help: () =>
         "Available commands:\n" +
-        "  help        - Show this help\n" +
-        "  about       - Who is Mahesh?\n" +
-        "  skills      - Tech stack & tools\n" +
-        "  projects    - Selected work\n" +
-        "  experience  - Internships & roles\n" +
-        "  education   - Academic background\n" +
-        "  social      - Social profiles\n" +
-        "  contact     - Get in touch\n" +
-        "  resume      - Download resume (opens link)\n" +
-        "  ls          - Quick overview\n" +
-        "  theme       - Toggle light/dark mode\n" +
-        "  clear       - Clear the screen"
-      ),
+        "  help                - Show this help\n" +
+        "  about               - About Mahesh\n" +
+        "  about --fun         - A fun version of about\n" +
+        "  skills              - Tech stack & tools\n" +
+        "  projects            - List projects\n" +
+        "  project <id|index>  - Detailed project view\n" +
+        "  experience          - Experience summary\n" +
+        "  education           - Academic background\n" +
+        "  social              - Social profiles\n" +
+        "  contact             - How to reach me\n" +
+        "  resume              - Open resume\n" +
+        "  ls                  - Quick overview\n" +
+        "  cd projects         - Hint for projects\n" +
+        "  theme               - Show current theme\n" +
+        "  theme list          - List theme options\n" +
+        "  theme <name>        - Switch theme (default/cyber/neon/retro/light)\n" +
+        "  matrix              - Toggle matrix rain effect\n" +
+        "  sudo                - Try it ;)\n" +
+        "  clear               - Clear screen",
 
-      about: () => (
-        "Hey, I'm Mahesh Sambhaji Dongare 👋\n" +
-        "A student and aspiring software developer from India.\n\n" +
-        "I love building web experiences, experimenting with Generative AI,\n" +
-        "customizing UIs (Stylus, browser extensions), and playing with cloud labs\n" +
-        "on Google Cloud."
-      ),
+      about: (args = []) => {
+        if (args.includes("--fun")) {
+          return (
+            "Mahesh v2.0.1 (experimental build) 🤖\n" +
+            "  - Class: Student / Developer hybrid\n" +
+            "  - Special attacks: CSS over-customization, GenAI experiments, cloud labs at 2AM\n" +
+            "  - Weaknesses: Long debugging sessions, overthinking small UI pixels\n" +
+            "  - Goal: Ship useful, clean, and slightly nerdy products on the web."
+          );
+        }
+        return (
+          "Hey, I'm Mahesh Sambhaji Dongare 👋\n" +
+          "A student and aspiring software developer from India.\n\n" +
+          "I love building web experiences, exploring Generative AI tools,\n" +
+          "customizing interfaces (Stylus, browser tweaks), and learning cloud\n" +
+          "concepts by doing real labs instead of only theory.\n\n" +
+          "I'm currently focusing on improving my frontend skills, deepening\n" +
+          "my understanding of cloud networking, and building small but useful\n" +
+          "projects I can ship and iterate on."
+        );
+      },
 
-      skills: () => (
+      skills: () =>
         "Skills & Tools:\n" +
         "  Languages:\n" +
         "    - JavaScript\n" +
@@ -284,10 +446,10 @@
         "    - HTML, CSS, responsive layouts\n" +
         "    - Tailwind CSS\n" +
         "    - React (basics)\n" +
-        "    - Browser UI customization (Stylus)\n\n" +
+        "    - Browser UI customization with Stylus\n\n" +
         "  Cloud & DevOps:\n" +
-        "    - Google Cloud Platform (Qwiklabs / Skill Boost labs)\n" +
-        "    - Basic Linux & shell\n\n" +
+        "    - Google Cloud Platform (hands-on labs: VPC, Load Balancing, Cloud Armor, etc.)\n" +
+        "    - Basic Linux, shell commands\n\n" +
         "  Tools:\n" +
         "    - Git & GitHub\n" +
         "    - VS Code\n" +
@@ -295,75 +457,88 @@
         "  Interests:\n" +
         "    - Generative AI\n" +
         "    - Automation & desktop assistants\n" +
-        "    - Creative UI/UX on web"
-      ),
+        "    - Creative UI/UX for the web",
 
-      projects: () => (
-        "Selected Projects:\n" +
-        "  1) Vital Care AI\n" +
-        "     - Concept of an AI-based health assistant to monitor vitals\n" +
-        "       and give basic suggestions.\n" +
-        "     - Focus on multimodal inputs and clean UI.\n" +
-        "     - Status: Concept & design phase.\n\n" +
-        "  2) GenAI Presentation Assistant\n" +
-        "     - Uses prompts to auto-generate PPT structures for subjects\n" +
-        "       like GenAI and cloud computing.\n" +
-        "     - Helps students quickly draft presentations.\n\n" +
-        "  3) Custom YouTube & SmashKarts Themes\n" +
-        "     - Created Stylus-based UI themes (Vedic / retro hacker style).\n" +
-        "     - Focused on color psychology, readability and aesthetics.\n\n" +
-        "  4) Google Cloud Labs\n" +
-        "     - Hands-on labs on VPC, Load Balancing, Cloud Armor, GKE, etc.\n" +
-        "     - Focus on understanding networking and security in the cloud.\n\n" +
-        "GitHub links: (update with your real profile)\n" +
-        "  -> https://github.com/your-handle"
-      ),
+      projects: () => {
+        let out = "Projects:\n";
+        PROJECTS.forEach((p, i) => {
+          out += `  [${i + 1}] ${p.name}  (${p.tags.join(", ")})\n     - ${p.summary}\n`;
+        });
+        out +=
+          "\nUse: project <index>  or  project <id>\n" +
+          "Example: project 1   or   project vitalcare";
+        return out;
+      },
 
-      experience: () => (
+      project: (args = []) => {
+        if (!args.length) {
+          return 'Usage: project <index|id>\nExample: project 1   or   project vitalcare';
+        }
+        const key = args[0].toLowerCase();
+        let proj = null;
+        if (!isNaN(Number(key))) {
+          const idx = Number(key) - 1;
+          if (PROJECTS[idx]) proj = PROJECTS[idx];
+        } else {
+          proj = PROJECTS.find(p => p.id.toLowerCase() === key);
+        }
+        if (!proj) {
+          return `No project found for "${key}". Try "projects" to see the list.`;
+        }
+        let out =
+          `${proj.name} (${proj.tags.join(", ")})\n` +
+          "-".repeat(proj.name.length + 5) + "\n" +
+          proj.details + "\n\n";
+        if (proj.links.github) out += `GitHub: ${proj.links.github}\n`;
+        if (proj.links.demo) out += `Demo:   ${proj.links.demo}\n`;
+        if (!proj.links.github && !proj.links.demo) {
+          out += "Links: To be added soon.\n";
+        }
+        return out;
+      },
+
+      experience: () =>
         "Experience:\n" +
-        "  - Student developer working on personal projects in web and AI.\n" +
+        "  - Student developer working on personal projects in web and GenAI-related tools.\n" +
         "  - Completed multiple Google Cloud Skill Boost / Qwiklabs labs\n" +
-        "    in networking, Kubernetes, and security.\n\n" +
-        "Actively looking for:\n" +
-        "  - Internships / part-time roles in web dev, GenAI, or cloud."
-      ),
+        "    in networking, security, and Kubernetes.\n\n" +
+        "Looking for:\n" +
+        "  - Internships / part-time roles in web development, GenAI,\n" +
+        "    or cloud-related projects where I can learn by building.",
 
-      education: () => (
+      education: () =>
         "Education:\n" +
-        "  - [Update with your college & degree]\n" +
+        "  - [Update this with your exact degree and college]\n" +
         "    e.g. B.E. / B.Tech in Computer Engineering\n" +
         "    Year: [YYYY - YYYY]\n\n" +
-        "Highlights:\n" +
-        "  - Courses: Data Structures, Web Development, Cloud Computing,\n" +
-        "    Artificial Intelligence, Generative AI.\n" +
-        "  - Extra: Participated in tech events, coding practice, cloud labs."
-      ),
+        "Relevant areas of interest:\n" +
+        "  - Web Development\n" +
+        "  - Cloud Computing\n" +
+        "  - Artificial Intelligence & Generative AI\n" +
+        "  - Computer Networks",
 
-      social: () => (
-        "Social Profiles (replace with your actual links):\n" +
+      social: () =>
+        "Social Profiles (replace with real links):\n" +
         "  GitHub   -> https://github.com/your-handle\n" +
         "  LinkedIn -> https://linkedin.com/in/your-handle\n" +
-        "  Twitter  -> https://x.com/your-handle"
-      ),
+        "  Twitter  -> https://x.com/your-handle",
 
-      contact: () => (
+      contact: () =>
         "Contact:\n" +
         "  Email   -> your-email@example.com\n" +
         "  LinkedIn-> https://linkedin.com/in/your-handle\n\n" +
-        "You can reach out for:\n" +
-        "  - Internships\n" +
-        "  - Collaboration on web / AI projects\n" +
-        "  - Custom UI themes and automation ideas"
-      ),
+        "Open to:\n" +
+        "  - Internship opportunities\n" +
+        "  - Collaboration on web / AI / cloud side-projects\n" +
+        "  - Feedback on my projects & portfolio",
 
       resume: () => {
-        // Put your real resume link here
-        const resumeUrl = "https://example.com/your-resume.pdf";
+        const resumeUrl = "https://example.com/your-resume.pdf"; // put your real resume link
         window.open(resumeUrl, "_blank");
         return "Opening resume in a new tab...";
       },
 
-      ls: () => (
+      ls: () =>
         ".\n" +
         "├── about.md\n" +
         "├── skills.txt\n" +
@@ -372,21 +547,54 @@
         "├── education.log\n" +
         "├── social.links\n" +
         "├── contact.cfg\n" +
-        "└── resume.pdf"
-      ),
+        "└── resume.pdf",
+
+      cd: (args = []) => {
+        if (!args.length) return "Usage: cd <dir>\nHint: try cd projects";
+        if (args[0].toLowerCase() === "projects") {
+          return 'Virtual filesystem only 😉  Use "projects" and "project <id>" instead.';
+        }
+        return `bash: cd: ${args[0]}: No such file or directory`;
+      },
 
       clear: () => {
         clearTerminal();
         return "";
       },
 
-      theme: () => {
-        document.body.classList.toggle("light");
-        try {
-          localStorage.setItem("mahesh-theme", document.body.classList.contains("light") ? "light" : "dark");
-        } catch (e) {}
-        return "Toggled theme.";
-      }
+      theme: (args = []) => {
+        if (!args.length) {
+          return (
+            `Current theme: ${STATE.colorTheme}${STATE.theme === "light" ? " (light mode)" : ""}\n` +
+            'Use "theme list" to see options.'
+          );
+        }
+        const sub = args[0].toLowerCase();
+        if (sub === "list") {
+          return (
+            "Available themes:\n" +
+            "  default   - hacker green\n" +
+            "  cyber     - purple cyberpunk\n" +
+            "  neon      - blue neon\n" +
+            "  retro     - warm retro terminal\n" +
+            "  light     - light mode\n\n" +
+            'Use: theme neon  or  theme light'
+          );
+        }
+        applyTheme(sub);
+        return `Switched theme to: ${STATE.colorTheme}${STATE.theme === "light" ? " (light mode)" : ""}`;
+      },
+
+      matrix: () => {
+        toggleMatrix();
+        return matrixOverlay.style.display === "none"
+          ? "Matrix effect disabled."
+          : "Matrix effect enabled. Follow the green rain...";
+      },
+
+      sudo: () =>
+        "sudo: permission denied.\n" +
+        "Nice try though. You already have root access to your own journey. 😉"
     };
 
     function createLine(text = "", isHTML = false) {
@@ -397,7 +605,7 @@
       } else {
         div.textContent = text;
       }
-      terminal.appendChild(div);
+      terminal.insertBefore(div, terminal.querySelector(".corner-badge"));
       terminal.scrollTop = terminal.scrollHeight;
       return div;
     }
@@ -409,6 +617,9 @@
     }
 
     function createInputLine() {
+      const existingInput = document.getElementById("input");
+      if (existingInput) existingInput.remove();
+
       const inputLine = document.createElement("div");
       inputLine.className = "input-line";
       inputLine.innerHTML = `
@@ -418,12 +629,12 @@
         <input id="input" autocomplete="off" spellcheck="false" aria-label="Terminal input" />
         <span class="cursor">▌</span>
       `;
-      terminal.appendChild(inputLine);
+      terminal.insertBefore(inputLine, terminal.querySelector(".corner-badge"));
 
       const hint = document.createElement("div");
       hint.className = "hint";
       hint.textContent = 'Type "help" to see commands. Use ↑ / ↓ for history, Tab for autocomplete.';
-      terminal.appendChild(hint);
+      terminal.insertBefore(hint, terminal.querySelector(".corner-badge"));
 
       const input = document.getElementById("input");
       input.focus();
@@ -432,16 +643,31 @@
     }
 
     function clearTerminal() {
-      terminal.innerHTML = "";
+      // remove all lines except overlay + badge
+      [...terminal.querySelectorAll(".line, .input-line, .hint")].forEach(el => el.remove());
       bootSequence();
     }
 
     function bootSequence() {
-      createLine(`Initializing Mahesh's portfolio ${STATE.version}...`);
-      createLine("Loading modules: [web] [genai] [cloud] [ui-customization]");
-      createLine("System status: OK\n");
-      createLine('Type "help" to list available commands.\n');
-      createInputLine();
+      const steps = [
+        `Booting MaheshOS ${STATE.version}...`,
+        "Loading modules: [web] [genai] [cloud] [ui-customization]",
+        "Checking network... OK",
+        "Starting portfolio services... OK",
+        "",
+        'Welcome. Type "help" to list available commands.',
+        ""
+      ];
+      let i = 0;
+      const runStep = () => {
+        if (i < steps.length) {
+          createLine(steps[i++]);
+          setTimeout(runStep, 350);
+        } else {
+          createInputLine();
+        }
+      };
+      runStep();
     }
 
     function handleInput(e) {
@@ -479,7 +705,7 @@
         e.preventDefault();
         const value = input.value.trim();
         if (!value) return;
-        const cmdPart = value.split(" ")[0].toLowerCase();
+        const [cmdPart] = value.split(/\s+/);
         const matches = Object.keys(COMMANDS).filter(c => c.startsWith(cmdPart));
         if (matches.length === 1) {
           input.value = matches[0];
@@ -509,13 +735,12 @@
         }
 
         if (value.length > 0) {
-          const cmd = value.split(" ")[0].toLowerCase();
-          if (COMMANDS[cmd]) {
-            const result = COMMANDS[cmd]();
-            if (cmd !== "clear") {
-              if (result && typeof result === "string") {
-                createLine(result);
-              }
+          const [cmd, ...args] = value.split(/\s+/);
+          const lowCmd = cmd.toLowerCase();
+          if (COMMANDS[lowCmd]) {
+            const result = COMMANDS[lowCmd](args);
+            if (lowCmd !== "clear" && result && typeof result === "string") {
+              createLine(result);
             }
           } else {
             createLine(`Command not found: ${value}\nType "help" to see available commands.`);
@@ -526,17 +751,84 @@
       }
     }
 
-    // theme from localStorage if available
+    // Theme helpers
+    function applyTheme(name) {
+      // reset classes
+      document.body.classList.remove("light", "theme-cyber", "theme-neon", "theme-retro");
+      STATE.theme = "dark";
+      STATE.colorTheme = "default";
+
+      switch (name) {
+        case "cyber":
+          document.body.classList.add("theme-cyber");
+          STATE.colorTheme = "cyber";
+          break;
+        case "neon":
+          document.body.classList.add("theme-neon");
+          STATE.colorTheme = "neon";
+          break;
+        case "retro":
+          document.body.classList.add("theme-retro");
+          STATE.colorTheme = "retro";
+          break;
+        case "light":
+          document.body.classList.add("light");
+          STATE.theme = "light";
+          STATE.colorTheme = "default";
+          break;
+        default:
+          // default hacker theme (no extra class)
+          STATE.colorTheme = "default";
+      }
+
+      try {
+        localStorage.setItem("mahesh-color-theme", STATE.colorTheme);
+        localStorage.setItem("mahesh-theme-mode", STATE.theme);
+      } catch (e) {}
+    }
+
+    // Matrix effect
+    function toggleMatrix() {
+      if (matrixOverlay.style.display === "none" || matrixOverlay.style.display === "") {
+        matrixOverlay.style.display = "block";
+        matrixOverlay.innerHTML = "";
+        const width = matrixOverlay.clientWidth;
+        const columns = Math.floor(width / 18);
+        const charset = "01ABCDEFGHIJKLMNOPQRSTUVXYZ@#$%&";
+
+        for (let i = 0; i < columns; i++) {
+          const col = document.createElement("div");
+          col.className = "matrix-column";
+          col.style.left = `${i * 18}px`;
+          col.style.animationDuration = 4 + Math.random() * 4 + "s";
+          col.style.animationDelay = Math.random() * 4 + "s";
+
+          let text = "";
+          const rows = 20 + Math.floor(Math.random() * 20);
+          for (let j = 0; j < rows; j++) {
+            const ch = charset[Math.floor(Math.random() * charset.length)];
+            text += ch + "\n";
+          }
+          col.textContent = text;
+          matrixOverlay.appendChild(col);
+        }
+      } else {
+        matrixOverlay.style.display = "none";
+        matrixOverlay.innerHTML = "";
+      }
+    }
+
+    // Restore theme from localStorage
     (function initTheme() {
       try {
-        const saved = localStorage.getItem("mahesh-theme");
-        if (saved === "light") {
-          document.body.classList.add("light");
-        }
+        const t = localStorage.getItem("mahesh-theme-mode");
+        const c = localStorage.getItem("mahesh-color-theme");
+        if (c) applyTheme(c);
+        if (t === "light") applyTheme("light");
       } catch (e) {}
     })();
 
-    // start
+    // Start terminal
     bootSequence();
   </script>
 </body>
