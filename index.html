@@ -5,291 +5,134 @@
   <title>mahesh@portfolio:~$</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- SEO -->
   <meta name="description" content="Terminal-style portfolio of Mahesh Sambhaji Dongare – AI & ML student passionate about Web Development, Cloud and Generative AI." />
   <meta name="keywords" content="Mahesh Dongare, AI ML student, portfolio, web developer, cloud, generative AI, VIIT Pune" />
   <meta name="author" content="Mahesh Sambhaji Dongare" />
   <meta name="theme-color" content="#020a06" />
 
-  <!-- OG Preview -->
-  <meta property="og:title" content="Mahesh Dongare — Terminal Portfolio" />
-  <meta property="og:description" content="Explore Mahesh's skills, projects and experience in this hacker-style portfolio." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://maheshdongare38.github.io/portfolio" />
-  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Mahesh+Terminal+Portfolio" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-
   <style>
     :root {
-      --bg-main: radial-gradient(circle at top, #1a472a 0, #020a06 45%, #000 100%);
-      --card-bg: #020503;
+      --bg-main: radial-gradient(circle at top, #1a472a 0, #020a06 45%, #000);
       --accent: #32ff7e;
-      --accent-soft: #0a3b20;
-      --text-main: #d6ffd6;
-      --shadow-main: 0 0 28px rgba(0, 255, 128, 0.25);
+      --text: #d6ffd6;
     }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Fira Code", monospace;
-    }
+    *{margin:0;padding:0;box-sizing:border-box;font-family:"Fira Code",monospace;}
+
     body {
-      min-height: 100vh;
-      background: var(--bg-main);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 16px;
-      color: var(--text-main);
-      transition: background 0.6s, color 0.4s;
+      height:100vh;background:var(--bg-main);
+      display:flex;align-items:center;justify-content:center;
+      padding:12px;color:var(--text);
+      transition:0.4s;
     }
-    .terminal-wrapper {
-      width: 100%;
-      max-width: 960px;
-      background: var(--card-bg);
-      border-radius: 12px;
-      border: 1px solid var(--accent-soft);
-      box-shadow: var(--shadow-main);
-      overflow: hidden;
-      position: relative;
+    .terminal {
+      width:100%; max-width:920px;
+      background:#020503; border:1px solid #0a3b20;
+      border-radius:12px; overflow:hidden;
+      box-shadow:0 0 16px rgba(0,255,128,0.22);
     }
-    .terminal-header {
-      display: flex;
-      align-items: center;
-      padding: 8px 12px;
-      background: #020a06;
-      border-bottom: 1px solid var(--accent-soft);
+    .header {
+      padding:10px;background:#010804;
+      border-bottom:1px solid #0c4021;
+      font-size:0.88rem;opacity:0.7;
     }
-    .dots {
-      display: flex;
-      gap: 6px;
-      margin-right: 10px;
+    .body {
+      height:74vh;overflow-y:auto;padding:10px;
+      font-size:0.95rem;line-height:1.45;
     }
-    .dot { width: 10px; height: 10px; border-radius: 50%; }
-    .red { background: #ff5f57; }
-    .yellow { background: #febc2e; }
-    .green { background: #28c840; }
-    .terminal-title { font-size: 0.85rem; opacity: 0.8; }
-    .terminal-body {
-      padding: 12px;
-      height: 73vh;
-      overflow-y: auto;
-      font-size: 0.95rem;
-      line-height: 1.5;
-      position: relative;
-    }
-    .line { white-space: pre-wrap; margin-bottom: 4px; }
-    .prompt { color: var(--accent); }
-    .input-line { display: flex; margin-top: 4px; }
-    #input {
-      flex: 1;
-      border: none;
-      outline: none;
-      background: transparent;
-      font: inherit;
-      color: var(--text-main);
-    }
-    .cursor {
-      width: 8px;
-      animation: blink 1s infinite;
-    }
-    @keyframes blink { 50% {opacity: 0;} }
-    .hint { font-size: 0.7rem; opacity: 0.6; margin-top: 4px; }
+    .line {margin-bottom:6px;white-space:pre-wrap;}
+    .prompt {color:var(--accent);font-weight:600;}
+    #input {flex:1;background:transparent;border:none;outline:none;color:var(--text);}
+    .input-line {display:flex;align-items:center;}
+    .cursor{width:6px;background:var(--accent);margin-left:2px;animation:blink 1s infinite;}
+    @keyframes blink{50%{opacity:0;}}
 
     /* Themes */
-    body.theme-cyber { --accent: #ff00e6; }
-    body.theme-neon { --accent: #00e6ff; }
-    body.theme-retro { --accent: #ffcc66; }
+    body.theme-cyber {--accent:#ff00e6;}
+    body.theme-neon {--accent:#00e6ff;}
+    body.theme-retro {--accent:#ffcc66;}
     body.light {
-      --bg-main: #ffffff;
-      --card-bg: #fff;
-      --accent: #007a5e;
-      --text-main: #111;
-      --shadow-main: 0 0 10px rgba(0,0,0,0.1);
+      --bg-main:#ffffff;
+      background:#fff;color:#000;
+      --accent:#007a5e;
+      --text:#000;
     }
-
-    /* Matrix effect */
-    .matrix-overlay {position:absolute; inset:0; overflow:hidden; pointer-events:none;}
-
   </style>
 </head>
 <body>
-  <div class="terminal-wrapper">
-    <div class="terminal-header">
-      <div class="dots"><div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div></div>
-      <div class="terminal-title">mahesh@portfolio:~</div>
-    </div>
-    <div class="terminal-body" id="terminal">
-      <div class="matrix-overlay" id="matrixOverlay"></div>
-    </div>
-  </div>
+
+<div class="terminal">
+  <div class="header">mahesh@portfolio:~</div>
+  <div class="body" id="terminal"></div>
+</div>
 
 <script>
-const terminal = document.getElementById("terminal");
-const matrixOverlay = document.getElementById("matrixOverlay");
+const term=document.getElementById("terminal");
 
-const STATE = {
-  username: "mahesh",
-  hostname: "portfolio",
-  version: "v1.3.0",
-  history: [],
-  historyIndex: -1,
-  colorTheme: "default"
-};
-
-const PROJECTS = [
-  {id:"vitalcare", name:"Vital Care AI", tags:["AI","Health"],
-   summary:"Concept of an AI-based health assistant.", details:"Improves health monitoring through AI assistance."},
-  {id:"genai-ppt", name:"GenAI Presentation Assistant", tags:["GenAI"],
-   summary:"Auto-creates presentation drafts using prompts.", details:"Enhances productivity using natural language."},
-  {id:"themes", name:"Custom UI Themes", tags:["CSS","Stylus"],
-   summary:"Stylus-based UI themes for web apps.", details:"Boosting UI/UX using creative CSS."}
+const PROJECTS=[
+  {id:"vitalcare",name:"Vital Care AI",summary:"AI based health assistant concept.",details:"Improves health monitoring through AI."},
+  {id:"genai-ppt",name:"GenAI Presentation Tool",summary:"Creates PPT drafts using prompts.",details:"Boosts productivity using LLMs."},
+  {id:"themes",name:"Custom UI Themes",summary:"Stylus UI modifications.",details:"Enhancing UI/UX using advanced CSS."}
 ];
 
-const COMMANDS = {
-  help: () =>
-`Available commands:
-  help                - Show this help
-  about               - About Mahesh
-  skills              - Tech stack
-  projects            - Show project list
-  project {index|id}  - View project details
-  experience          - Work summary
-  education           - Academic details
-  social              - GitHub, LinkedIn
-  contact             - Email
-  resume              - Open resume link
-  theme list          - Show themes
-  theme {name}        - Change theme (default/cyber/neon/retro/light)
-  matrix              - Toggle Matrix effect
-  clear               - Clear screen`,
-  
-  about: () =>
-`I'm Mahesh Sambhaji Dongare 👋
-AI & ML Student passionate about:
-  • Web Development
-  • Generative AI
-  • Cloud + Linux
-
-Focused on building projects that help people!`,
-
-  skills: () =>
-`Skills:
-  - JavaScript, Python, C/C++
-  - HTML, CSS, Tailwind, React (basics)
-  - Google Cloud (Qwiklabs labs)
-  - Linux Basics
-  - UI Customization (Stylus)`,
-
-  projects: () => 
-PROJECTS.map((p,i)=>`  [${i+1}] ${p.name} - ${p.summary}`).join("\n") +
-`\n\nUse: project 1  OR  project vitalcare`,
-
-  project: (args) => {
-    if(!args.length) return "Usage: project {index|id}";
-    const key=args[0].toLowerCase();
-    let p = isNaN(key)? PROJECTS.find(x=>x.id===key):PROJECTS[Number(key)-1];
-    return p? `${p.name}\n${p.details}` : "Project not found.";
-  },
-
-  experience: () =>
-`Experience:
-  - Personal projects in AI/web
-  - Completed multiple Google Cloud labs
-  - Always learning 🚀`,
-
-  education: () =>
-`Education:
-B.Tech in Artificial Intelligence and Machine Learning
-Vishwakarma Institute of Information Technology
-Pune – 411048, Maharashtra, India
-Graduation: 2026`,
-
-  social: () =>
-`GitHub:   https://github.com/MaheshDongare38
-LinkedIn: (Coming Soon)`,
-
-  contact: () =>
-`Email: mahesh.1506.2005@gmail.com`,
-
-  resume: () =>
-`Resume not uploaded yet.
-Once ready → I'll activate this command 🚀`,
-
-  theme: (args) => {
-    if(args[0]==="list")
-      return "Themes: default, cyber, neon, retro, light";
-    let t=args[0];
-    document.body.classList = "";
-    if(t==="cyber") document.body.classList.add("theme-cyber");
-    if(t==="neon") document.body.classList.add("theme-neon");
-    if(t==="retro") document.body.classList.add("theme-retro");
-    if(t==="light") document.body.classList.add("light");
-    localStorage.setItem("theme",t);
-    return `Theme switched → ${t || "default"}`;
-  },
-
-  matrix: () => {
-    let show=matrixOverlay.style.display!=="block";
-    matrixOverlay.style.display=show?"block":"none";
-    return show? "Matrix enabled" : "Matrix disabled";
-  },
-
-  clear: () => (terminal.innerHTML = "")
+const CMDS={
+help:()=>`Commands:
+  help | about | skills
+  projects | project {id}
+  experience | education
+  social | contact | resume
+  theme list | theme {name}
+  matrix | clear`,
+about:()=>`I'm Mahesh 👋
+AI & ML Student @ VIIT Pune\nWeb Dev | GenAI | Cloud`,
+skills:()=>`JavaScript | Python | React (Basics)\nLinux | CSS | Google Cloud`,
+projects:()=>PROJECTS.map((p,i)=>`[${i+1}] ${p.name} - ${p.summary}`).join("\n")
+          +`\n\nUsage: project 1  OR  project vitalcare`,
+project:(a)=>{if(!a[0])return"Usage: project {index|id}";
+let k=a[0].toLowerCase();
+let p=isNaN(k)?PROJECTS.find(x=>x.id===k):PROJECTS[k-1];
+return p?`${p.name}\n${p.details}`:"Project not found."},
+experience:()=>`Hands-on experience through:\n• Personal projects\n• Google Cloud Labs\n• UI/UX experiments`,
+education:()=>`B.Tech AIML\nVIIT Pune\nGraduation: 2026`,
+social:()=>`GitHub: https://github.com/MaheshDongare38\nLinkedIn: Coming soon`,
+contact:()=>`Email: mahesh.1506.2005@gmail.com`,
+resume:()=>`Resume not uploaded yet — will activate soon 🚀`,
+theme:(a)=>{const t=a[0];if(!t||t==="list")
+return"Available: default | cyber | neon | retro | light";
+document.body.className="theme-"+t;localStorage.setItem("theme",t);
+return`Theme switched → ${t}`},
+matrix:()=>"Feature coming soon…",
+clear:()=>term.innerHTML=""
 };
 
-function boot() {
-  write(`Booting PortfolioOS ${STATE.version}...\n`);
-  setTimeout(()=> write('Type "help" to begin\n\n'),400);
-  setTimeout(newPrompt,600);
+function init(){
+  let saved=localStorage.getItem("theme");
+  if(saved)document.body.className="theme-"+saved;
+  write("Booting PortfolioOS v1.3…");
+  setTimeout(()=>write('Type "help" to begin'),500);
+  setTimeout(prompt,800);
 }
-
-function write(txt){
-  let d=document.createElement("div");
-  d.className="line";
-  d.textContent=txt;
-  terminal.appendChild(d);
-  terminal.scrollTo(0,terminal.scrollHeight);
+function write(t){let d=document.createElement("div");d.className="line";d.textContent=t;term.appendChild(d);term.scrollTop=99999;}
+function prompt(){
+  let l=document.createElement("div");
+  l.className="input-line";
+  l.innerHTML=`<span class="prompt">mahesh@portfolio:~$</span> <input id="input" autocomplete="off"><div class="cursor"></div>`;
+  term.appendChild(l);
+  let input=document.getElementById("input");
+  input.focus();
+  input.onkeydown=e=>{
+    if(e.key==="Enter"){
+      const v=input.value.trim();
+      l.innerHTML=`mahesh@portfolio:~$ ${v}`;
+      execute(v);prompt();
+    }
+  };
 }
-
-function newPrompt(){
-  let div=document.createElement("div");
-  div.className="input-line";
-  div.innerHTML=`<span class="prompt">${STATE.username}@${STATE.hostname}:~$</span> <input id="input"><span class="cursor">▌</span>`;
-  terminal.appendChild(div);
-  let inp=document.getElementById("input");
-  inp.focus();
-  inp.onkeydown=handleInput;
+function execute(v){
+  let[c,...a]=v.split(" ");
+  write(CMDS[c]?CMDS[c](a):"Command not found");
 }
-
-function handleInput(e){
-  if(e.key==="Enter"){
-    let val=e.target.value.trim();
-    STATE.history.push(val);
-    write(`${STATE.username}@${STATE.hostname}:~$ ${val}`);
-    e.target.parentElement.remove();
-    process(val);
-    newPrompt();
-  }
-}
-
-function process(val){
-  let [cmd,...args]=val.split(" ");
-  if(COMMANDS[cmd]) write(COMMANDS[cmd](args));
-  else write(`Unknown command: ${cmd}`);
-}
-
-// load theme
-applySavedTheme();
-boot();
-
-function applySavedTheme(){
-  let t = localStorage.getItem("theme");
-  if(t) COMMANDS.theme([t]);
-}
+init();
 </script>
+
 </body>
 </html>
